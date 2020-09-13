@@ -16,7 +16,7 @@ for i in range(0, len(lots) - 1):
     # e.g ('Lot 24-\n3:40pm\nCanyon Crest Drive\nFree Spaces\n405\nOccupancy\n0%\n')
     split_string = lots[i].text.split('\n') 
     parking_lot = {
-        'Parking Lot' : split_string[0],
+        'Parking Lot' : split_string[0].replace('-', ''),
         'Time' : split_string[1],
         'Free Spaces' : split_string[4],
         'Occupancy' : split_string[6],
