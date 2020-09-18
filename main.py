@@ -10,6 +10,12 @@ r.html.render(sleep=1, keep_page=True, scrolldown=1)
 
 lots = r.html.find('.col-sm-6')
 
+filename = 'parking_data.csv'
+f = open(filename, 'w')
+
+headers = 'lot, empty_spaces, time\n'
+f.write(headers)
+
 for i in range(0, len(lots) - 1):
     # Info for each lot is returned as list of strings.
     # All info for single lot is a single string with data seperated with newlines
@@ -23,6 +29,9 @@ for i in range(0, len(lots) - 1):
     } 
     print(parking_lot)
 
+    f.write(parking_lot.get('Parking Lot') + ',' + parking_lot.get('Free Spaces') + ',' + parking_lot.get('Time') + '\n')
+
+f.close()
 session.close()
 
 # # ---- Gets and displays all info for all parking lots (for testing) ----
